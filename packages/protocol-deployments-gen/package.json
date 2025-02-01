@@ -6,7 +6,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "build": "pnpm run wagmi:generate",
+    "build": "node init && pnpm run wagmi:generate",
     "wagmi:generate": "wagmi generate && pnpm exec rename-generated-abi-casing ./generated/wagmi.ts"
   },
   "dependencies": {

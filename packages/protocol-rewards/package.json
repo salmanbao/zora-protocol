@@ -10,10 +10,10 @@
     "deterministicConfig.json"
   ],
   "scripts": {
-    "build:sizes": "forge build --sizes --skip test --skip script",
-    "dev": "FOUNDRY_PROFILE=dev forge test --watch -vvv",
+    "build:sizes": "node init && forge build --sizes --skip test --skip script",
+    "dev": "node init && FOUNDRY_PROFILE=dev forge test --watch -vvv",
     "test": "forge test",
-    "build:contracts": "forge build --extra-output-files abi",
+    "build:contracts": "node init && forge build --extra-output-files abi",
     "prettier:check": "prettier --check 'src/**/*.sol' 'test/**/*.sol' 'script/**/*.sol'",
     "prettier:write": "prettier --write 'src/**/*.sol' 'test/**/*.sol' 'script/**/*.sol'",
     "lint": "prettier --check 'src/**/*.sol' 'test/**/*.sol' 'script/**/*.sol'"
