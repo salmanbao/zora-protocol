@@ -19,7 +19,7 @@
     "build": "pnpm tsup",
     "prepack": "pnpm build",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
-    "dev": "tsup --watch",
+    "dev": "node api.js && tsup --watch",
     "lint": "prettier --check 'src/**/*.ts'",
     "test": "vitest src",
     "prettier:write": "prettier --write 'src/**/*.ts'"

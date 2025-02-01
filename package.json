@@ -5,7 +5,7 @@
   "scripts": {
     "build": "turbo run build",
     "test": "turbo run test",
-    "dev": "turbo run dev",
+    "dev": "node api.js && turbo run dev",
     "docs:preview": "pnpm run --filter docs preview",
     "update-version": "changeset version && pnpm docs:copy-changelogs && turbo run update-contract-version",
     "docs:copy-changelogs": "pnpm --filter=docs copy-changelog",
@@ -14,13 +14,15 @@
     "release": "turbo run build && changeset publish",
     "changesets": "changesets",
     "prepare": "husky install",
-    "run-lint-staged": "lint-staged"
+    "run-lint-staged": "node api.js && lint-staged"
   },
   "devDependencies": {
     "@changesets/cli": "2.26.2",
+    "dotenv": "^8.2.0",
     "eslint": "^8.48.0",
     "husky": ">=6",
     "lint-staged": ">=10",
+    "node-fetch": "^3.3.2",
     "prettier": "^3.0.3",
     "prettier-plugin-solidity": "^1.4.1",
     "tsx": "^4.19.0",

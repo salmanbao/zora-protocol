@@ -6,7 +6,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "FOUNDRY_PROFILE=dev forge test --watch -vvv",
+    "dev": "node api.js && FOUNDRY_PROFILE=dev forge test --watch -vvv",
     "test": "pnpm generate && forge test -vvv",
     "copy-deployed-contracts": "pnpm tsx script/copy-deployed-contracts.ts",
     "unlink-common": "rm -rf ./node_modules/@zoralabs/shared-contracts && cp -r ../shared-contracts ./node_modules/@zoralabs/shared-contracts",
@@ -15,6 +15,7 @@
     "unlink-contracts": "pnpm unlink-common && pnpm run unlink-protocol-rewards && pnpm run unlink-1155",
     "link-contracts": "rm -rf ./node_modules && cd .. && pnpm install",
     "update-pending-upgrades": "pnpm tsx script/getPendingUpgrades.ts",
+    "generate-signatures": "pnpm tsx script/signDeploymentTransactions.ts",
     "generate": "pnpm exec generate-fork-tests"
   },
   "devDependencies": {
@@ -42,6 +43,7 @@
     "solmate": "6.1.0",
     "toml": "^3.0.0",
     "tsx": "^3.13.0",
+    "dotenv": "^16.4.7",
     "typescript": "^5.2.2",
     "@zoralabs/chains": "^1.4.1",
     "viem": "^2.9.19"
