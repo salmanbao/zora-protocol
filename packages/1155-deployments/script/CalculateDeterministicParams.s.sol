@@ -68,8 +68,6 @@ contract FactoryProxyDeterministicParams is ZoraDeployerBase {
         vm.serializeBytes32("UPGRADE_GATE_JSON", "salt", salt);
         string memory output = vm.serializeBytes("UPGRADE_GATE_JSON", "creationCode", creationCodeUpgradeGate);
 
-        console2.log(output);
-
         mkdir("deterministicConfig/upgradeGate");
         vm.writeJson(output, paramsFilePath("upgradeGate"));
     }
