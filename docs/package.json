@@ -4,9 +4,9 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "vocs dev",
-    "build": "tsc --noEmit",
-    "build:site": "vocs build",
+    "dev": "node init && vocs dev",
+    "build": "node init && tsc --noEmit",
+    "build:site": "node init && vocs build",
     "preview": "vocs preview",
     "copy-changelog": "tsx scripts/copy-changelogs.ts",
     "generate-uml": "tsx scripts/generateUml.ts"

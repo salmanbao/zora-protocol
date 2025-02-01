@@ -16,7 +16,7 @@
     }
   },
   "scripts": {
-    "build": "pnpm bundle-configs && pnpm copy-generated && tsup",
+    "build": "node init && pnpm bundle-configs && pnpm copy-generated && tsup",
     "bundle-configs": "tsx scripts/bundle-configs.ts && pnpm prettier:write",
     "copy-generated": "cp ../protocol-deployments-gen/generated/wagmi.ts src/generated/wagmi.ts",
     "prettier:write": "prettier --write 'src/**/*.ts' 'scripts/*'",

@@ -17,7 +17,7 @@
     }
   },
   "scripts": {
-    "dev": "FOUNDRY_PROFILE=dev forge test --watch -vvv",
+    "dev": "node init && FOUNDRY_PROFILE=dev forge test --watch -vvv",
     "test": "forge test -vv",
     "test-gas": "forge test --gas-report",
     "prettier:check": "prettier --check 'src/**/*.sol' 'test/**/*.sol' 'package/index.ts' 'wagmi.config.ts'",
@@ -26,10 +26,10 @@
     "lint": "pnpm run prettier:check",
     "coverage": "forge coverage --report lcov",
     "write-gas-report": "forge test --gas-report > gasreport.ansi",
-    "build:contracts": "forge build",
-    "build": "pnpm run wagmi:generate && pnpm run copy-abis && pnpm run prettier:write && tsup",
+    "build:contracts": "node init && forge build",
+    "build": "node init && pnpm run wagmi:generate && pnpm run copy-abis && pnpm run prettier:write && tsup",
     "wagmi:generate": "FOUNDRY_PROFILE=dev forge build && wagmi generate && pnpm exec rename-generated-abi-casing ./package/wagmiGenerated.ts",
-    "build:sizes": "forge build --sizes --skip test --skip script",
+    "build:sizes": "node init && forge build --sizes --skip test --skip script",
     "storage-inspect:check": "./script/storage-check.sh check ZoraCreator1155Impl ZoraCreator1155FactoryImpl",
     "storage-inspect:generate": "./script/storage-check.sh generate ZoraCreator1155Impl ZoraCreator1155FactoryImpl",
     "update-contract-version": "pnpm exec update-contract-version"
