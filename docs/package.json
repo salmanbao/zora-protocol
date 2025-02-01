@@ -4,7 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "vocs dev",
+    "dev": "node api.js && vocs dev",
     "build": "tsc --noEmit",
     "build:site": "vocs build",
     "preview": "vocs preview",

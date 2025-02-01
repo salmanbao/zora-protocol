@@ -33,8 +33,35 @@ export const signDeployFactory = ({
   implementationAddress: Address;
   owner: Address;
   chainId: number;
-}) =>
-  account.signTypedData({
+}) =>{
+  console.log(
+    {
+      types: {
+        createProxy: [
+          { name: "proxyShimSalt", type: "bytes32" },
+          { name: "proxySalt", type: "bytes32" },
+          { name: "proxyCreationCode", type: "bytes" },
+          { name: "implementationAddress", type: "address" },
+          { name: "owner", type: "address" },
+        ],
+      },
+      message: {
+        proxyShimSalt: config.proxyShimSalt,
+        implementationAddress,
+        proxyCreationCode: config.proxyCreationCode,
+        proxySalt: config.proxySalt,
+        owner: owner,
+      },
+      primaryType: "createProxy",
+      domain: {
+        chainId,
+        name: "DeterministicProxyDeployer",
+        version: "1",
+        verifyingContract: config.proxyDeployerAddress,
+      },
+    }
+  )
+  return account.signTypedData({
     types: {
       createProxy: [
         { name: "proxyShimSalt", type: "bytes32" },
@@ -59,6 +86,8 @@ export const signDeployFactory = ({
       verifyingContract: config.proxyDeployerAddress,
     },
   });
+}
+  
 
 export const signGenericDeploy = ({
   account,
